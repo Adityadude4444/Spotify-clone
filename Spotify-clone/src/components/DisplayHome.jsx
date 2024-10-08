@@ -17,9 +17,12 @@ export const DisplayHome = () => {
               image={item.image}
               name={item.name}
               desc={item.desc}
+              id={item.id}
             />
           ))}
         </div>
+      </div>
+      <div className="mb-4">
         <div className="flex flex-col">
           <h1 className="font-bold text-xl my-4">Today's biggest hits</h1>
           <div className="flex overflow-auto mb-7">

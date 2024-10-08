@@ -1,13 +1,27 @@
 import React from "react";
 import { assets } from "../assets/assets";
+import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
+  const Navigate = useNavigate();
   return (
     <div className="flex flex-col">
       <div className="flex justify-between">
         <div className="flex gap-2">
-          <img src={assets.arrow_left} className="h-6" />
-          <img src={assets.arrow_right} className="h-6" />
+          <img
+            onClick={() => {
+              Navigate(-1);
+            }}
+            src={assets.arrow_left}
+            className="h-6 cursor-pointer"
+          />
+          <img
+            onClick={() => {
+              Navigate(1);
+            }}
+            src={assets.arrow_right}
+            className="h-6 cursor-pointer"
+          />
         </div>
         <div className="flex gap-4">
           <button className="rounded-full text-black bg-white w-fit p-2 font-medium">
