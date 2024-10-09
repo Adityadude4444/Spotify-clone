@@ -6,7 +6,7 @@ import Musicalbum from "./musicalbum";
 
 export const DisplayHome = () => {
   return (
-    <div className="p-5 w-[100%] lg:w-[80%]">
+    <>
       <Navbar />
       <div className="mb-4">
         <h1 className="font-bold text-xl my-4">Featured Charts</h1>
@@ -37,6 +37,6 @@ export const DisplayHome = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };

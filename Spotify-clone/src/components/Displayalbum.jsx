@@ -7,20 +7,25 @@ import Songlist from "./Songlist";
 
 const Displayalbum = () => {
   const { id } = useParams();
-  console.log(albumsData[id]);
+  const albumId = parseInt(id, 10);
+  const album = albumsData[albumId];
+  if (!album) {
+    return <div>Album not found</div>;
+  }
+
   return (
-    <div className="p-5 w-[100%] lg:w-[80%]">
+    <>
       <Navbar />
       <div className="flex gap-2">
         <div>
-          <img src={albumsData[id].image} className="w-[250px] p-4" />
+          <img src={album.image} className="w-[250px] p-4" alt={album.name} />
         </div>
         <div className="flex flex-col w-full p-4 gap-2">
           <p className="mt-[10px]">Playlist</p>
-          <p className="text-6xl font-bold">{albumsData[id].name}</p>
-          <p>{albumsData[id].desc}</p>
+          <p className="text-6xl font-bold">{album.name}</p>
+          <p>{album.desc}</p>
           <div className="flex gap-1">
-            <img src={assets.spotify_logo} className="w-5" />
+            <img src={assets.spotify_logo} className="w-5" alt="Spotify Logo" />
             <p className="font-semibold">Spotify</p>
           </div>
         </div>
@@ -28,13 +33,11 @@ const Displayalbum = () => {
       <div className="grid grid-cols-2 lg:grid-cols-4 text-[#dcd5d5]">
         <div className="flex gap-2">
           <p>#</p>
-
-          <p>title</p>
+          <p>Title</p>
         </div>
-
         <p className="hidden lg:block">Album</p>
-        <p className="hidden lg:block">Data added</p>
-        <p>time</p>
+        <p className="hidden lg:block">Date added</p>
+        <p>Time</p>
       </div>
       <div className="flex flex-col gap-2">
         {songsData.map((item, index) => (
@@ -42,13 +45,13 @@ const Displayalbum = () => {
             key={index}
             id={item.id}
             name={item.name}
-            alname={albumsData[id].name}
+            alname={album.name}
             image={item.image}
             duration={item.duration}
           />
         ))}
       </div>
-    </div>
+    </>
   );
 };
 
